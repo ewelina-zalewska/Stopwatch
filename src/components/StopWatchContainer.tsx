@@ -3,6 +3,7 @@ import { TheCounter } from "@/components/TheCounter";
 import { TimeConverter } from "@/utils/timeConverter";
 import { TheButton } from "@/components/TheButton";
 import { LapBoard } from "@/components/LapBoard";
+import { TheSummary } from "@/components/TheSummary";
 
 //variables
 const intervalTime: number = 1;
@@ -31,11 +32,15 @@ export const StopWatchContainer = () => {
 	const [lapCounter, setLapCounter] = useState<number>(0);
 	const [isRunning, setIsRunning] = useState<boolean>(false);
 	const [lapsBoard, setLapsBoard] = useState<Lap[]>([]);
+	const [showSummary, setShowSummary] = useState<boolean>(false);
 
-	const mainStopwatch: string = TimeConverter(totalCounter);
-	const lapStopwatch: string = TimeConverter(lapCounter);
-	const currentLap: string = `current tap: ${lapsBoard.length ? lapsBoard.length : "---"}`;
-	const fastestLap: string = `fastest tap: ${lapsBoard.length > 0 ? TimeConverter(Math.min(...lapsBoard.map((lap) => lap.counter))) : 0}`;
+	const totalNumberOfLaps: number = lapsBoard.length;
+	const currentLap: number | "---" = totalNumberOfLaps
+		? totalNumberOfLaps
+		: "---";
+	const fastestLap: string = totalNumberOfLaps
+		? TimeConverter(Math.min(...lapsBoard.map((lap) => lap.counter)))
+		: TimeConverter(0);
 
 	useEffect(() => {
 		isRunning ? START_COUNTER() : STOP_COUNTER();
@@ -64,6 +69,7 @@ export const StopWatchContainer = () => {
 			clearInterval(interval.current);
 			interval.current = null;
 		}
+		totalCounter && setShowSummary(true);
 	};
 
 	const RESET_COUNTER = () => {
@@ -74,8 +80,8 @@ export const StopWatchContainer = () => {
 
 	const ADD_NEW_LAP = () => {
 		const newLap: Lap = {
-			numberOfLap: lapsBoard.length + 1,
-			lapTime: lapStopwatch,
+			numberOfLap: totalNumberOfLaps + 1,
+			lapTime: TimeConverter(lapCounter),
 			counter: lapCounter,
 		};
 		if (isRunning) {
@@ -83,19 +89,19 @@ export const StopWatchContainer = () => {
 			setLapCounter(0);
 		}
 	};
-
+	const CLOSE_SUMMARY = () => setShowSummary(false);
 	return (
 		<>
 			<div>
 				<TheCounter
-					stopwatch={mainStopwatch}
+					stopwatch={TimeConverter(totalCounter)}
 					name={mainStopwatchName}
-					lapInformation={fastestLap}
+					lapInformation={`The fastest lap ${fastestLap}`}
 				/>
 				<TheCounter
-					stopwatch={lapStopwatch}
+					stopwatch={TimeConverter(lapCounter)}
 					name={lapStopwatchName}
-					lapInformation={currentLap}
+					lapInformation={`Current lap: ${currentLap}`}
 				/>
 			</div>
 			<div>
@@ -116,6 +122,14 @@ export const StopWatchContainer = () => {
 				/>
 			</div>
 			<LapBoard laps={lapsBoard} />
+			{showSummary && (
+				<TheSummary
+					handleClose={CLOSE_SUMMARY}
+					totalTime={TimeConverter(totalCounter)}
+					laps={lapsBoard}
+					fastestLap={fastestLap}
+				/>
+			)}
 		</>
 	);
 };
