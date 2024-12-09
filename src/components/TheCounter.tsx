@@ -1,12 +1,14 @@
-﻿import { LapBoard } from "@/components/LapBoard";
-
-type Props = {
+﻿type CounterProps = {
 	stopwatch: string;
 	name: string;
 	lapInformation: string;
 };
 
-export const TheCounter = ({ stopwatch, name, lapInformation }: Props) => {
+export const TheCounter = ({
+	stopwatch,
+	name,
+	lapInformation,
+}: CounterProps) => {
 	return (
 		<>
 			<div>

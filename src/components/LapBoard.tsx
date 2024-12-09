@@ -7,7 +7,7 @@
 
 export const LapBoard = ({ laps }: LapBoardProps) => {
 	return (
-		<>
+		<div>
 			<ul>
 				{laps.map((lap, i) => (
 					<li key={i}>
@@ -15,6 +15,6 @@ export const LapBoard = ({ laps }: LapBoardProps) => {
 					</li>
 				))}
 			</ul>
-		</>
+		</div>
 	);
 };
