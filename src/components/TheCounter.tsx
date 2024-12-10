@@ -14,7 +14,7 @@ export const TheCounter = ({
 			<div className="counterBox">
 				<p>{name}</p>
 				<div className="counter">
-					<p>{stopwatch}</p>
+					<p className="stopwatch">{stopwatch}</p>
 				</div>
 				<p>{lapInformation}</p>
 			</div>

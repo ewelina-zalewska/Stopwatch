@@ -9,7 +9,7 @@
 	background: variables.$box-dark-color-portrait;
 	header,
 	main {
-		margin-bottom: 25px;
+		margin-bottom: 10px;
 	}
 	header {
 		font-size: xx-large;
@@ -20,8 +20,9 @@
 		@include variables.flexPositioning(row, center, center);
 		div {
 			@include variables.flexPositioning(column, start, initial);
+			font-size: x-large;
 			padding: 10px;
-			p:last-child {
+			.endPosition {
 				align-self: flex-end;
 			}
 		}
@@ -38,6 +39,7 @@
 		.close {
 			width: 70px;
 			height: 70px;
+			font-size: medium;
 			background: variables.$btn-color-version5;
 		}
 	}
