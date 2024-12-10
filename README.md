@@ -7,7 +7,7 @@ total time,
 lap time,
 the fastest lap,
 the slowest lap,  
- total number of laps.
+total number of laps.
 
 This is the project created during my course Frontowcy.
 
