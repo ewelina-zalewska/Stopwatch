@@ -1,0 +1,33 @@
+﻿@use "variables";
+
+#buttons {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+	margin-bottom: 20px;
+	.start {
+		background: variables.$btn-color-version1;
+	}
+	.stop {
+		background: variables.$btn-color-version2;
+	}
+	.reset {
+		background: variables.$btn-color-version3;
+	}
+	.lap {
+		background: variables.$btn-color-version4;
+	}
+
+	button {
+		width: variables.$btn-size;
+		height: variables.$btn-size;
+		font: 100% variables.$font-stack;
+		font-size: large;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: variables.$font-dark-color;
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+}

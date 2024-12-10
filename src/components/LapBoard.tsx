@@ -7,14 +7,22 @@
 
 export const LapBoard = ({ laps }: LapBoardProps) => {
 	return (
-		<div>
-			<ul>
-				{laps.map((lap, i) => (
-					<li key={i}>
-						lap: {lap.numberOfLap}, time: {lap.lapTime}
-					</li>
-				))}
-			</ul>
-		</div>
+		<>
+			<div
+				id="lapsHeadline"
+				style={{ display: !laps.length ? "block" : "none" }}
+			>
+				<p>laps</p>
+			</div>
+			<div id="lapBoard">
+				<ul style={{ display: laps.length ? "block" : "none" }}>
+					{laps.map((lap, i) => (
+						<li key={i}>
+							{lap.numberOfLap} lap: time: {lap.lapTime}
+						</li>
+					))}
+				</ul>
+			</div>
+		</>
 	);
 };

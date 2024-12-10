@@ -1,0 +1,26 @@
+﻿@use "variables";
+#lapsHeadline {
+	position: absolute;
+	right: 40%;
+	bottom: -10px;
+	width: initial;
+	height: initial;
+	font-size: xx-large;
+	color: variables.$lap-border-color;
+}
+#lapBoard {
+	position: relative;
+	display: block;
+	width: 100%;
+	max-height: 170px;
+	margin: 20px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	border: variables.$lap-board-border;
+	ul {
+		list-style: none;
+		padding: 10px;
+
+		text-align: center;
+	}
+}

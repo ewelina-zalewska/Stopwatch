@@ -9,14 +9,11 @@ import { TheSummary } from "@/components/TheSummary";
 const intervalTime: number = 1;
 const mainStopwatchName: string = "total time";
 const lapStopwatchName: string = "lap time";
-const stopLabel: string = "stop";
-const stopLabelColor: string = "blue";
-const startLabel: string = "start";
-const startLabelColor: string = "green";
-const resetLabel: string = "reset";
-const resetLabelColor: string = "yellow";
-const lapLabel: string = "lap";
-const lapLabelColor: string = "red";
+
+const stopBtnLabel: string = "stop";
+const startBtnLabel: string = "start";
+const resetBtnLabel: string = "reset";
+const lapBtnLabel: string = "lap";
 
 interface Lap {
 	numberOfLap: number;
@@ -92,36 +89,29 @@ export const StopWatchContainer = () => {
 	const CLOSE_SUMMARY = () => setShowSummary(false);
 	return (
 		<>
-			<div>
-				<TheCounter
-					stopwatch={TimeConverter(totalCounter)}
-					name={mainStopwatchName}
-					lapInformation={`The fastest lap ${fastestLap}`}
-				/>
-				<TheCounter
-					stopwatch={TimeConverter(lapCounter)}
-					name={lapStopwatchName}
-					lapInformation={`Current lap: ${currentLap}`}
-				/>
+			<div id="stopwatchcontainer">
+				<div id="counters">
+					<TheCounter
+						stopwatch={TimeConverter(totalCounter)}
+						name={mainStopwatchName}
+						lapInformation={`Fastest lap: ${fastestLap}`}
+					/>
+					<TheCounter
+						stopwatch={TimeConverter(lapCounter)}
+						name={lapStopwatchName}
+						lapInformation={`Current lap: ${currentLap}`}
+					/>
+				</div>
+				<div id="buttons">
+					<TheButton
+						label={isRunning ? stopBtnLabel : startBtnLabel}
+						onClick={CHANGE_COUNTER_CONDITION}
+					/>
+					<TheButton label={resetBtnLabel} onClick={RESET_COUNTER} />
+					<TheButton label={lapBtnLabel} onClick={ADD_NEW_LAP} />
+				</div>
+				<LapBoard laps={lapsBoard} />
 			</div>
-			<div>
-				<TheButton
-					label={isRunning ? stopLabel : startLabel}
-					btnColor={isRunning ? stopLabelColor : startLabelColor}
-					onClick={CHANGE_COUNTER_CONDITION}
-				/>
-				<TheButton
-					label={resetLabel}
-					btnColor={resetLabelColor}
-					onClick={RESET_COUNTER}
-				/>
-				<TheButton
-					label={lapLabel}
-					btnColor={lapLabelColor}
-					onClick={ADD_NEW_LAP}
-				/>
-			</div>
-			<LapBoard laps={lapsBoard} />
 			{showSummary && (
 				<TheSummary
 					handleClose={CLOSE_SUMMARY}

@@ -2,13 +2,12 @@
 
 type ButtonProps = {
 	label: string;
-	btnColor: string;
 	onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const TheButton = ({ btnColor, label, onClick }: ButtonProps) => {
+export const TheButton = ({ label, onClick }: ButtonProps) => {
 	return (
-		<button onClick={onClick} style={{ backgroundColor: `${btnColor}` }}>
+		<button className={label} onClick={onClick}>
 			{label}
 		</button>
 	);

@@ -1,0 +1,21 @@
+﻿@use "variables";
+
+#counters {
+	@include variables.flexPositioning(column, initial);
+
+	.counterBox {
+		width: 100%;
+		padding: 10px;
+		text-align: center;
+		text-transform: uppercase;
+		p {
+			padding: 10px;
+		}
+		.counter {
+			font-weight: 600;
+			border-radius: 10px;
+			background: variables.$box-light-color;
+			color: variables.$font-dark-color;
+		}
+	}
+}

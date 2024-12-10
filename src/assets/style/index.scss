@@ -1,0 +1,73 @@
+@use "variables";
+@use "buttons";
+@use "scrollbar";
+@use "counters";
+@use "lapBoard";
+@use "summary";
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font: 100% variables.$font-stack;
+	font-size: x-large;
+	background-color: variables.$bg-color;
+	color: variables.$font-light-color;
+
+	#root {
+		@include variables.flexPositioning(column, center);
+
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: variables.$box-width;
+		height: variables.$box-height;
+		background: variables.$box-dark-color-portrait;
+		box-shadow: 0px 0px 1.5px 1.5px variables.$border-color-portrait;
+		border-radius: 10px;
+		overflow: hidden;
+		#stopwatchcontainer {
+			@include variables.flexPositioning(column, center);
+			position: relative;
+			margin: 20px auto;
+			width: variables.$counter-width;
+		}
+	}
+
+	@media ((orientation: landscape) and (min-width: 700px)) {
+		#root {
+			justify-items: center;
+			height: variables.$box-width;
+			width: variables.$box-height;
+			background: variables.$box-dark-color-landscape;
+			box-shadow: 0px 0px 1.5px 1.5px variables.$border-color-landscape;
+			#stopwatchcontainer {
+				flex-direction: row;
+				margin: 0;
+				width: variables.$counter-width-ifLandscape;
+				height: inherit;
+				#counters {
+					width: variables.$counter-width;
+				}
+				#buttons {
+					flex-direction: column;
+					height: inherit;
+					width: auto;
+					margin: 0 variables.$btn-margin;
+				}
+				#lapsHeadline {
+					right: 20%;
+					top: 38%;
+				}
+				#lapBoard {
+					width: variables.$counter-width;
+					max-height: 60%;
+					max-width: variables.$counter-width;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+﻿$bg-color: #04040e;
+
+$border-color-portrait: #1d1d26;
+$border-color-landscape: #1d1d26;
+
+$box-dark-color-portrait: radial-gradient(
+	circle at 50% 30%,
+	black,
+	#04040e,
+	#1d1d26
+);
+$box-dark-color-landscape: radial-gradient(ellipse at 50% 50%, black, #04040e);
+$box-light-color: radial-gradient(circle at 50% 50%, #d1ccc3, #1d1d26);
+
+$box-height: 100%;
+$box-width: 370px;
+
+$btn-color-version1: radial-gradient(circle at 50% 50%, #d1ccc3, #f0532a);
+$btn-color-version2: radial-gradient(circle at 50% 50%, #f0532a, #d1ccc3);
+$btn-color-version3: radial-gradient(at 20% 20%, #d1ccc3, #f0532a);
+$btn-color-version4: radial-gradient(circle at 80% 80%, #d1ccc3, #f0532a);
+$btn-color-version5: radial-gradient(circle at 10% 90%, #f0532a, #d1ccc3);
+
+$btn-size: 60px;
+$btn-margin: calc(#{$btn-size} / 2);
+
+$counter-width: 270px;
+$counter-width-ifLandscape: calc(
+	#{$counter-width} * 2 + #{$btn-size} + #{$btn-size}
+);
+
+$font-stack: "VT323", "Spectral SC", sans-serif;
+$font-dark-color: #04040e;
+$font-light-color: #d1ccc3;
+
+$lap-border-color: #bdbebd;
+$lap-board-border: 3px solid $lap-border-color;
+
+@mixin flexPositioning($direction, $positionAlongAxis) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: $positionAlongAxis;
+}

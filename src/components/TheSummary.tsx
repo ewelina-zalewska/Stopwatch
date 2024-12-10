@@ -4,6 +4,9 @@ import { TimeConverter } from "@/utils/timeConverter";
 
 //variables
 const title = "summary";
+const closeBtnLabel = "close";
+const closeBtnColor = "#f0532a";
+const closeBtnFont = "#04040e";
 
 type SummaryProps = {
 	handleClose: MouseEventHandler<HTMLButtonElement>;
@@ -38,7 +41,7 @@ export const TheSummary = ({
 			? TimeConverter(Math.max(...laps.map((lap) => lap.counter)))
 			: TimeConverter(0);
 	return (
-		<div>
+		<div id="summary">
 			<header>{title}</header>
 			<main>
 				<div>
@@ -52,7 +55,12 @@ export const TheSummary = ({
 				</div>
 			</main>
 			<footer>
-				<TheButton onClick={handleClose} label="close" btnColor="brown" />
+				<TheButton
+					onClick={handleClose}
+					label={closeBtnLabel}
+					color={closeBtnFont}
+					btnColor={closeBtnColor}
+				/>
 			</footer>
 		</div>
 	);

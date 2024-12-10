@@ -11,10 +11,12 @@ export const TheCounter = ({
 }: CounterProps) => {
 	return (
 		<>
-			<div>
-				<h2>{name}</h2>
-				<h1>{stopwatch}</h1>
-				<h2>{lapInformation}</h2>
+			<div className="counterBox">
+				<p>{name}</p>
+				<div className="counter">
+					<p>{stopwatch}</p>
+				</div>
+				<p>{lapInformation}</p>
 			</div>
 		</>
 	);
