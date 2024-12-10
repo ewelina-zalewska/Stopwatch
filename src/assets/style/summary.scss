@@ -1,0 +1,44 @@
+﻿@use "variables";
+
+#summary {
+	@include variables.flexPositioning(column, center, initial);
+	@include variables.positionAbsolute(0, 0, 100%, 100%);
+	justify-content: center;
+
+	text-transform: uppercase;
+	background: variables.$box-dark-color-portrait;
+	header,
+	main {
+		margin-bottom: 25px;
+	}
+	header {
+		font-size: xx-large;
+		text-align: center;
+		width: 100%;
+	}
+	main {
+		@include variables.flexPositioning(row, center, center);
+		div {
+			@include variables.flexPositioning(column, start, initial);
+			padding: 10px;
+			p:last-child {
+				align-self: flex-end;
+			}
+		}
+	}
+	footer {
+		display: block;
+		width: 160px;
+		height: 110px;
+		background: variables.$image;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+
+		.close {
+			width: 70px;
+			height: 70px;
+			background: variables.$btn-color-version5;
+		}
+	}
+}

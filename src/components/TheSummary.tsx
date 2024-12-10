@@ -5,8 +5,6 @@ import { TimeConverter } from "@/utils/timeConverter";
 //variables
 const title = "summary";
 const closeBtnLabel = "close";
-const closeBtnColor = "#f0532a";
-const closeBtnFont = "#04040e";
 
 type SummaryProps = {
 	handleClose: MouseEventHandler<HTMLButtonElement>;
@@ -45,22 +43,22 @@ export const TheSummary = ({
 			<header>{title}</header>
 			<main>
 				<div>
-					<h3>Total time:{totalTime}</h3>
-					<h3>
-						Average lap time: {TimeConverter(Math.round(average_lap_time))}
-					</h3>
-					<h3>The fastest lap: {fastestLap}</h3>
-					<h3>The slowest lap: {slowestLap}</h3>
-					<h3>Total number of laps: {totalNumberOfLaps}</h3>
+					<p>Total time:</p>
+					<p>Average lap time:</p>
+					<p>The fastest lap:</p>
+					<p>The slowest lap:</p>
+					<p>Total number of laps:</p>
+				</div>
+				<div>
+					<p>{totalTime}</p>
+					<p>{TimeConverter(Math.round(average_lap_time))}</p>
+					<p>{fastestLap}</p>
+					<p>{slowestLap}</p>
+					<p>{totalNumberOfLaps}</p>
 				</div>
 			</main>
 			<footer>
-				<TheButton
-					onClick={handleClose}
-					label={closeBtnLabel}
-					color={closeBtnFont}
-					btnColor={closeBtnColor}
-				/>
+				<TheButton onClick={handleClose} label={closeBtnLabel} />
 			</footer>
 		</div>
 	);

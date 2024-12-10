@@ -1,13 +1,14 @@
 ﻿@use "variables";
 
 #counters {
-	@include variables.flexPositioning(column, initial);
+	@include variables.flexPositioning(column, initial, initial);
 
 	.counterBox {
 		width: 100%;
 		padding: 10px;
 		text-align: center;
 		text-transform: uppercase;
+		letter-spacing: 1px;
 		p {
 			padding: 10px;
 		}

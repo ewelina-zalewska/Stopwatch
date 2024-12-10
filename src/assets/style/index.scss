@@ -12,25 +12,25 @@
 
 body {
 	font: 100% variables.$font-stack;
-	font-size: x-large;
+	font-size: large;
 	background-color: variables.$bg-color;
 	color: variables.$font-light-color;
 
 	#root {
-		@include variables.flexPositioning(column, center);
-
-		position: absolute;
-		left: 50%;
-		top: 50%;
+		@include variables.flexPositioning(column, center, initial);
+		@include variables.positionAbsolute(
+			50%,
+			50%,
+			variables.$box-width,
+			variables.$box-height
+		);
 		transform: translate(-50%, -50%);
-		width: variables.$box-width;
-		height: variables.$box-height;
 		background: variables.$box-dark-color-portrait;
 		box-shadow: 0px 0px 1.5px 1.5px variables.$border-color-portrait;
 		border-radius: 10px;
 		overflow: hidden;
 		#stopwatchcontainer {
-			@include variables.flexPositioning(column, center);
+			@include variables.flexPositioning(column, center, initial);
 			position: relative;
 			margin: 20px auto;
 			width: variables.$counter-width;

@@ -33,11 +33,26 @@ $font-stack: "VT323", "Spectral SC", sans-serif;
 $font-dark-color: #04040e;
 $font-light-color: #d1ccc3;
 
+$image: url("@/assets/images/circles-light.webp");
+
 $lap-border-color: #bdbebd;
 $lap-board-border: 3px solid $lap-border-color;
 
-@mixin flexPositioning($direction, $positionAlongAxis) {
+@mixin flexPositioning(
+	$direction,
+	$positionAlongAxis,
+	$positionParallelToAxis
+) {
 	display: flex;
 	flex-direction: $direction;
 	align-items: $positionAlongAxis;
+	justify-items: $positionParallelToAxis;
+}
+
+@mixin positionAbsolute($left, $top, $width, $height) {
+	position: absolute;
+	left: $left;
+	top: $top;
+	width: $width;
+	height: $height;
 }
