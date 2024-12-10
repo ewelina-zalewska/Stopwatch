@@ -38,6 +38,10 @@ export const TheSummary = ({
 		totalNumberOfLaps > 0
 			? TimeConverter(Math.max(...laps.map((lap) => lap.counter)))
 			: TimeConverter(0);
+	const totalTimeOfLaps = laps.reduce((accumulator, currentValue) => {
+		accumulator += currentValue.counter;
+		return accumulator;
+	}, 0);
 	return (
 		<div id="summary">
 			<header>{title}</header>
@@ -47,6 +51,7 @@ export const TheSummary = ({
 					<p>Average lap time:</p>
 					<p>The fastest lap:</p>
 					<p>The slowest lap:</p>
+					<p>Total time of laps:</p>
 					<p>Total number of laps:</p>
 				</div>
 				<div>
@@ -54,7 +59,10 @@ export const TheSummary = ({
 					<p>{TimeConverter(Math.round(average_lap_time))}</p>
 					<p>{fastestLap}</p>
 					<p>{slowestLap}</p>
-					<p>{totalNumberOfLaps}</p>
+					<p className="endPosition">
+						{TimeConverter(Math.round(totalTimeOfLaps))}
+					</p>
+					<p className="endPosition">{totalNumberOfLaps}</p>
 				</div>
 			</main>
 			<footer>
