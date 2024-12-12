@@ -20,7 +20,6 @@ interface Lap {
 	lapTime: string;
 	counter: number;
 }
-[];
 
 export const StopWatchContainer = () => {
 	const interval = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -40,7 +39,7 @@ export const StopWatchContainer = () => {
 		: TimeConverter(0);
 
 	useEffect(() => {
-		isRunning ? START_COUNTER() : STOP_COUNTER();
+		START_OR_STOP_COUNTER(isRunning);
 		return () => {
 			if (interval.current) {
 				clearInterval(interval.current);
@@ -66,15 +65,21 @@ export const StopWatchContainer = () => {
 			clearInterval(interval.current);
 			interval.current = null;
 		}
-		totalCounter && setShowSummary(true);
+		if (totalCounter) setShowSummary(true);
 	};
+
+	const START_OR_STOP_COUNTER = (isTrue: boolean) =>
+		isTrue ? START_COUNTER() : STOP_COUNTER();
 
 	const RESET_COUNTER = () => {
 		setTotalCounter(0);
 		setLapCounter(0);
-		setLapsBoard((prevLapsBoard) => ([...prevLapsBoard] = []));
+		setLapsBoard((prevLapsBoard) => {
+			const newLapsBoard = [...prevLapsBoard];
+			newLapsBoard.length = 0;
+			return newLapsBoard;
+		});
 	};
-
 	const ADD_NEW_LAP = () => {
 		const newLap: Lap = {
 			numberOfLap: totalNumberOfLaps + 1,
